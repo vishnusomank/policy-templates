@@ -1,0 +1,18 @@
+apiVersion: security.kubearmor.com/v1
+kind: KubeArmorHostPolicy
+metadata: 
+  name: maintenance-tool-access
+spec: 
+  message: "restricted maintenance tool access attempt detected"
+  selector: 
+    matchLabels: 
+      kubearmor.io/container.name: alpine
+  tags: 
+    - PCI_DSS
+    - MITRE
+  severity: 1
+  process:
+      matchDirectories:
+      - dir: /sbin/
+        recursive: true
+  action: Audit

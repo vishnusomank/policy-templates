@@ -14,6 +14,19 @@ policyRules:
       never be used in prod env, or if used, should be used only in certain time frames.
       Examples include, dynamic package management tools, mii-tool, iptables etc
   yaml: ksp-audit-maintenance-tool-access.yaml
+- name: maint-tools-access
+  precondition:
+  - /sbin/*
+  description:
+    refs:
+    - name: MITRE-TTP
+      url:
+      - https://attack.mitre.org/techniques/T1553/
+    tldr: Restrict access to maintenance tools (apk, mii-tool, ...)
+    detailed: Container images might contain maintenance tools which should ideally
+      never be used in prod env, or if used, should be used only in certain time frames.
+      Examples include, dynamic package management tools, mii-tool, iptables etc
+  yaml: hsp-audit-maintenance-tool-access.yaml
 - name: trusted-cert-mod
   precondition: 
   - /etc/ssl/.*

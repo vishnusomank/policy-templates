@@ -1,0 +1,13 @@
+version: v0.2.3
+policyRules:
+- name: trusted-cert-mod
+  precondition:
+  - OPTSCAN
+  description:
+    refs:
+    - name: MITRE-TTP
+      url:
+      - https://attack.mitre.org/techniques/T1553/
+    tldr: Prevent certificate bundle tampering
+    detailed: Operating systems maintain a list of trusted certificates (often called trust bundles) in file system. These bundles decides which authorities are trusted. Subverting these trust controls would essentially allow an adversary to operate as a trusted entity. Adversaries may undermine security controls that will either warn users of untrusted activity or prevent execution of untrusted programs. Operating systems and security products may contain mechanisms to identify programs or websites as possessing some level of trust. Examples of such features would include a program being allowed to run because it is signed by a valid code signing certificate, a program prompting the user with a warning because it has an attribute set from being downloaded from the Internet, or getting an indication that you are about to connect to an untrusted site.
+  yaml: csp-trusted-cert-mod.yaml
